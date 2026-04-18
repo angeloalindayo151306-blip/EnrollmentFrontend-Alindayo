@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Course Enrollment</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Student Course Enrollment System</h1>
+
+    <!-- Add Student Section -->
+    <section>
+      <h2>Add Student</h2>
+      <input type="text" id="name" placeholder="Name" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="number" id="yearLevel" placeholder="Year Level" />
+      <button onclick="addStudent()">Add Student</button>
+    </section>
+
+    <!-- Students List Section -->
+    <section>
+      <h2>Students List</h2>
+      <button onclick="getStudents()">Load Students</button>
+      <ul id="studentsList"></ul>
+    </section>
+
+    <!-- Link JS at bottom -->
+    <script src="script.js"></script>
+  </body>
+</html>
