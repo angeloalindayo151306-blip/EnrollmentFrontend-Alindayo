@@ -1,31 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Course Enrollment</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <h1>Student Course Enrollment System</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Enrollment System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    <!-- Add Student Section -->
-    <section>
-      <h2>Add Student</h2>
-      <input type="text" id="name" placeholder="Name" />
-      <input type="email" id="email" placeholder="Email" />
-      <input type="number" id="yearLevel" placeholder="Year Level" />
-      <button onclick="addStudent()">Add Student</button>
-    </section>
+  <!-- Focus Overlay -->
+  <div id="focusOverlay"></div>
 
-    <!-- Students List Section -->
-    <section>
-      <h2>Students List</h2>
-      <button onclick="getStudents()">Load Students</button>
-      <ul id="studentsList"></ul>
-    </section>
+  <div class="layout">
 
-    <!-- Link JS at bottom -->
-    <script src="script.js"></script>
-  </body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>Enrollment</h2>
+      <ul>
+        <li onclick="focusSection('studentsSection')">Students</li>
+        <li onclick="focusSection('coursesSection')">Courses</li>
+        <li onclick="focusSection('enrollmentsSection')">Enrollments</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="topbar">
+        Student Course Enrollment Portal
+      </header>
+
+      <!-- STUDENTS SECTION -->
+      <section id="studentsSection" class="panel">
+        <h3>Students</h3>
+
+        <div class="form-row">
+          <input type="text" id="studentName" placeholder="Student Name">
+          <input type="email" id="studentEmail" placeholder="Email">
+          <input type="number" id="yearLevel" placeholder="Year Level">
+
+          <button id="studentSubmitBtn"
+            onclick="editingStudentId ? updateStudent() : addStudent()">
+            Add
+          </button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Year</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTable"></tbody>
+        </table>
+      </section>
+
+      <!-- COURSES SECTION -->
+      <section id="coursesSection" class="panel">
+        <h3>Courses</h3>
+
+        <div class="form-row">
+          <input type="text" id="courseTitle" placeholder="Course Title">
+          <input type="text" id="courseDescription" placeholder="Description">
+
+          <button id="courseSubmitBtn"
+            onclick="editingCourseId ? updateCourse() : addCourse()">
+            Add
+          </button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="coursesTable"></tbody>
+        </table>
+      </section>
+
+      <!-- ENROLLMENTS SECTION -->
+      <section id="enrollmentsSection" class="panel">
+        <h3>Enroll Student</h3>
+
+        <div class="form-row">
+          <select id="enrollStudentId"></select>
+          <select id="enrollCourseId"></select>
+
+          <!-- ✅ Added ID here -->
+          <button id="enrollSubmitBtn" onclick="createEnrollment()">
+            Enroll
+          </button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Student</th>
+              <th>Course</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="enrollmentsTable"></tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
 </html>
