@@ -1,167 +1,191 @@
-/* =========================
-   GLOBAL
-========================= */
-
 body {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-h1 {
-  text-align: center;
-  color: white;
-  padding: 40px 0 20px 0;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* =========================
-   CARD SECTIONS
-========================= */
-
-section {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  transition: 0.3s ease;
-}
-
-section:hover {
-  transform: translateY(-4px);
-}
-
-h2 {
-  margin-top: 0;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
   color: #1e293b;
 }
 
-/* =========================
-   INPUTS
-========================= */
-
-input, select {
-  padding: 10px 12px;
-  margin: 6px 10px 12px 0;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  outline: none;
-  min-width: 180px;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-input:focus, select:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-button {
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: white;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(37, 99, 235, 0.4);
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
-/* Delete Button */
-button.delete-btn {
-  background: linear-gradient(135deg, #dc2626, #991b1b);
-}
-
-button.delete-btn:hover {
-  box-shadow: 0 8px 15px rgba(220, 38, 38, 0.4);
-}
-
-/* =========================
-   LIST STYLE
-========================= */
-
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 10px;
-}
-
-li {
-  background: #f8fafc;
-  padding: 12px 15px;
-  border-radius: 10px;
-  margin-bottom: 8px;
+/* LAYOUT */
+.layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #1e3a8a;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 6px;
   transition: 0.2s ease;
 }
 
-li:hover {
+.sidebar li:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.sidebar li.active {
+  background: rgba(255,255,255,0.25);
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+/* TOPBAR */
+.topbar {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* PANELS */
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.panel h3 {
+  margin-top: 0;
+}
+
+/* FORM ROW */
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-row input,
+.form-row select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  flex: 1;
+}
+
+button {
+  padding: 8px 12px;
+  background: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
   background: #e2e8f0;
 }
 
-/* =========================
-   STOCK INFO
-========================= */
-
-#stockInfo {
-  font-weight: 600;
-  color: #1e40af;
-  margin-bottom: 10px;
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 /* =========================
-   RESPONSIVE
+   ADVANCED FOCUS MODE
 ========================= */
 
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
+#focusOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 50;
+}
 
-  input, select {
-    width: 100%;
-    margin-right: 0;
-  }
+#focusOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 
-  button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
+.panel.focused {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%) scale(0.9);
+  width: 70%;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 100;
+  animation: slideIn 0.35s ease forwards, glowPulse 2s infinite alternate;
+  box-shadow: 0 0 40px rgba(79,70,229,0.8);
+  border-radius: 12px;
+}
 
-  li {
-    flex-direction: column;
-    align-items: flex-start;
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -70%) scale(0.8);
+    opacity: 0;
   }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 25px rgba(79,70,229,0.5);
+  }
+  to {
+    box-shadow: 0 0 50px rgba(79,70,229,0.9);
+  }
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #2563eb;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
